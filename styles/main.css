@@ -1,0 +1,65 @@
+/* CODE NOTES
+
+
+*/
+
+
+/**************************************************************************** 
+GLOBAL STYLES
+*****************************************************************************/
+html {
+  box-sizing: border-box;
+
+}
+
+img {
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+body {
+  background-color: rgb(5,5,5);
+  height: 800px;
+  width: 100%;
+}
+div.wrapper {
+  align-items: center;
+  background-color: rgb(5,5,5);
+  border: 1px solid rgb(75,75,75);
+  display: flex;
+  flex-flow: row;
+  height: 100%;
+  justify-content: center;
+  padding: 1% 1% 0;
+  width: 100%;
+
+}
+/**************************************************************************** 
+CONTROL STYLES
+*****************************************************************************/
+aside#sideControls {
+  border: 1px solid rgb(150,150,150);
+  height: 600px;
+  width: 100px;
+  
+}
+
+/**************************************************************************** 
+BOARD STYLES
+*****************************************************************************/
+main#gameBoard {
+  border: 1px solid rgb(150,150,150);
+  display: flex;
+  flex-flow: row wrap;
+  height: 600px;
+  margin-right: 1%;
+  width: 600px;
+}
+
+.brdTile {
+  background-color: rgb(100,100,100);
+  border: .5px dashed rgb(125,125,125);
+  height: 99px;
+  width: 99px;
+}
