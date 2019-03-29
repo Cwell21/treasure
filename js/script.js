@@ -1,26 +1,29 @@
 
 (function() {
 
+  
   //GAME OPTIONS
   let gameOptions = {
     boardSize: 36,
     dragon: {
       name: "Lisa",
-      image: "../images/lisa.jpg",
-      location: 0
+      image: "./images/Dragon1.jpg",
+      location: 0,
+      
     },
     treasure: {
-      image: "../images/treasure.jpg",
+      image: "./images/treasure.jpg",
       location: 0
     },
     user: {
       name: "Brave Warrior",
-      image: "../images/warrior.png",
-      location: 0
+      image: "./images/hero.png",
+      location: 0,      
     },
   };
 
   // GAME BOARD OBJECT
+  
   let gameBoard = {
     createBoard: (tile) => {
       let elBoard = document.getElementById("gameBoard");
@@ -30,15 +33,24 @@
       elBoard.appendChild(elDiv);
     },
     fillBoard: () => {
+      
       // RANDOMLY PLACE TREASURE NODE (LOCATION 0 NOT ALLOWED)
       do {
         gameOptions.treasure.location = Math.round(Math.floor(Math.random() * gameOptions.boardSize));
       }while (gameOptions.treasure.location == 0)
+      
       //RANDOMLY PLACE DRAGON NODE (LOCATION 0 AND DRAGON.LOCATOIN NOT ALLOWED)
       do {
         gameOptions.dragon.location = Math.round(Math.floor(Math.random() * gameOptions.boardSize));        
       } while (gameOptions.dragon.location == 0 || gameOptions.dragon.location == gameOptions.treasure.location)
+      
     },
+    addControls: () => {
+
+    },
+    moveHero: (moveDir) => {
+
+    }
   }
 
   //CREATE BOARD TILES
@@ -46,7 +58,11 @@
   for (let i=0; i < gameOptions.boardSize; i++) {
     gameBoard.createBoard(i);
   }
+  gameOptions.user.elHero = document.getElementById("0");
+  gameOptions.user.elHero.appendChild(document.createElement("img")).setAttribute("src", gameOptions.user.image);
 
   gameBoard.fillBoard();
-  
+  console.log(gameOptions.dragon.location);
+  console.log(gameOptions.treasure.location);
+
 }());
