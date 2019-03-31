@@ -50,7 +50,7 @@ aside#sideControls {
   
 }
 
-div.button {
+div.dirButton {
   background-color: rgb(47, 122, 47);
   border: 5px dashed rgb(25,125,25);
   border-radius: 5px;
@@ -58,7 +58,7 @@ div.button {
   width: 50%;
 }
 
-div.button:hover {
+div.dirButton:hover {
   background-color: rgb(55, 253, 55);
   cursor: pointer;
 }

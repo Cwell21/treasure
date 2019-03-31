@@ -1,4 +1,7 @@
 
+const elBoard = document.getElementById("gameBoard");
+const elControl = document.getElementById("sideControls");
+
 (function() {
 
   
@@ -8,8 +11,7 @@
     dragon: {
       name: "Lisa",
       image: "./images/Dragon1.jpg",
-      location: 0,
-      
+      location: 0,      
     },
     treasure: {
       image: "./images/treasure.jpg",
@@ -18,15 +20,26 @@
     user: {
       name: "Brave Warrior",
       image: "./images/hero.png",
-      location: 0,      
+      location: 0,
+      move: (dir) => {    
+        
+        gameOptions.user.elHero = document.getElementById(gameOptions.user.location + dir);
+        gameOptions.user.elHero.appendChild(document.createElement("img")).setAttribute("src", gameOptions.user.image);
+        gameOptions.user.elHero.appendChild(document.createElement("img")).setAttribute("id", "hero");
+      }    
     },
   };
 
-  // GAME BOARD OBJECT
-  
+  /*************************************** 
+  GAME BOARD OBJECT
+  METHODS AND PROPERTIES:
+    createBoard - creates div elements and their attributes for individual game tiles
+    fillBoard - place Treasure and dragon nodes
+    addContorols - add buttons for character movement
+  ***************************************/  
+
   let gameBoard = {
-    createBoard: (tile) => {
-      let elBoard = document.getElementById("gameBoard");
+    createBoard: (tile) => {      
       let elDiv = document.createElement("div");
       elDiv.setAttribute("id", tile);
       elDiv.setAttribute("class", "brdTile");
@@ -45,21 +58,34 @@
       } while (gameOptions.dragon.location == 0 || gameOptions.dragon.location == gameOptions.treasure.location)
       
     },
-    addControls: () => {
+    addControls: (id) => {
+      let elButton = document.createElement("div");
+      elButton.setAttribute("class", "dirButton")
+      elButton.setAttribute("id", id);
+      elButton.addEventListener("click", () => {gameOptions.user.move(id)});
+      elControl.appendChild(elButton);
 
+      
     },
-    moveHero: (moveDir) => {
-
-    }
   }
 
+  
   //CREATE BOARD TILES
 
   for (let i=0; i < gameOptions.boardSize; i++) {
     gameBoard.createBoard(i);
   }
+
+  //CREATE CONTROLS
+  for (let i=0; i < 4; i++){
+    gameBoard.addControls(i);
+  }
+
   gameOptions.user.elHero = document.getElementById("0");
   gameOptions.user.elHero.appendChild(document.createElement("img")).setAttribute("src", gameOptions.user.image);
+  gameOptions.user.elHero.appendChild(document.createElement("img")).setAttribute("id", "hero");
+
+
 
   gameBoard.fillBoard();
   console.log(gameOptions.dragon.location);
