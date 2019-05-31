@@ -1,11 +1,11 @@
 
-let virBoard = [];
+
 
 (function() {
 
   const elBoard = document.getElementById("gameBoard");
   const elControl = document.getElementById("sideControls");
-
+  let virBoard = [];
 
   //GAME OPTIONS
   let gameOptions = {
@@ -55,11 +55,13 @@ let virBoard = [];
       // RANDOMLY PLACE TREASURE NODE (LOCATION 0 NOT ALLOWED)
       do {
         gameOptions.treasure.location = Math.round(Math.floor(Math.random() * gameOptions.boardSize));
+        virBoard[gameOptions.treasure.location] = 't';
       }while (gameOptions.treasure.location == 0)
 
       //RANDOMLY PLACE DRAGON NODE (LOCATION 0 AND DRAGON.LOCATOIN NOT ALLOWED)
       do {
         gameOptions.dragon.location = Math.round(Math.floor(Math.random() * gameOptions.boardSize));
+        virBoard[gameOptions.dragon.location] = 'd';
       } while (gameOptions.dragon.location == 0 || gameOptions.dragon.location == gameOptions.treasure.location)
 
     },
@@ -69,36 +71,30 @@ let virBoard = [];
       elButton.setAttribute("id", id);
       elButton.addEventListener("click", () => {gameOptions.user.move(id)});
       elControl.appendChild(elButton);
-
-
     },
   }
-
-
   //CREATE BOARD TILES
 
   for (let i=0; i < gameOptions.boardSize; i++) {
     gameBoard.createBoard(i);
-    virBoard.push(i);
+    virBoard.push('x');
+    console.log(virBoard[i]);
   }
 
   //CREATE CONTROLS
   for (let i=0; i < 4; i++){
     gameBoard.addControls(i);
   }
-
-  gameOptions.user.elHero = document.getElementById("0");
-
-  gameOptions.user.elHero.appendChild(document.createElement("img"))
-    .setAttribute("src", gameOptions.user.image);
-
-  gameOptions.user.elHero.appendChild(document.createElement("img"))
-    .setAttribute("id", "hero");
-
-
+  //CODE FOR INITIAL PLACEMENT OF HERO (TILE 0)
+  let elHero = document.getElementById("0");
+  elHero.classList.add("hero");
 
   gameBoard.fillBoard();
   console.log(gameOptions.dragon.location);
   console.log(gameOptions.treasure.location);
+
+  for (let i=0; i < virBoard.length; i++) {
+    console.log(virBoard[i]);
+  }
 
 }());

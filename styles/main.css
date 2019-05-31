@@ -85,4 +85,21 @@ main#gameBoard {
 /* HERO CLASS */
 .hero {
   background-image: url('../images/hero.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* DRAGON CLASS */
+.dragon {
+  background-image: url('../images/Dragon1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* TREASURE CLASS */
+.treasure {
+  background-image: url('../images/treasure.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
