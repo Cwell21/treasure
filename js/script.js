@@ -5,7 +5,6 @@
 
   const elBoard = document.getElementById("gameBoard");
   const elControl = document.getElementById("sideControls");
-  let virBoard = [];
 
   //GAME OPTIONS
   let gameOptions = {
@@ -73,11 +72,13 @@
       elControl.appendChild(elButton);
     },
   }
+
+
+  let virBoard = Array(gameOptions.boardSize).fill('x'); //CREATES VIRTUAL BOARD
   //CREATE BOARD TILES
 
-  for (let i=0; i < gameOptions.boardSize; i++) {
+  for (let i=0; i < virBoard.length; i++) {
     gameBoard.createBoard(i);
-    virBoard.push('x');
     console.log(virBoard[i]);
   }
 
