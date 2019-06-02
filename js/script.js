@@ -19,6 +19,7 @@ let chkLocation = heroLoc => {
 //GAME OPTIONS
 let gameOptions = {
   boardSize: 36,
+  tileId: 0,
   dragon: {
     name: "Lisa",
     image: "./images/Dragon1.jpg",
@@ -59,11 +60,12 @@ METHODS AND PROPERTIES:
 ***************************************/
 
 let gameBoard = {
-  createBoard: (x,y) => {
+  createBoard: (tileId) => {
     let elDiv = document.createElement("div");
-    elDiv.setAttribute("id", x + y);
+    elDiv.setAttribute("id", tileId);
     elDiv.setAttribute("class", "brdTile");
     elBoard.appendChild(elDiv);
+    gameOptions.tileId += 1;
   },
 
   fillBoard: () => {
@@ -84,19 +86,17 @@ let gameBoard = {
 }
 let virBoard = Array(Math.sqrt(gameOptions.boardSize)); //INITIALIZE VIRTUAL BOARD ARRAY
 
-// let virBoard = Array(gameOptions.boardSize).fill('x');
-//CREATES VIRTUAL BOARD
+
+//CREATES VIRTUAL BOARD - DEFAULT 6 (sqrt of 36) ROWS OF 6 (sqrt of 36) CELLS
 for (let i=0; i < Math.sqrt(gameOptions.boardSize); i++) {
   let virRow = Array(Math.sqrt(gameOptions.boardSize)).fill('x');
   virBoard.push(virRow);
 }
 
 //CREATE BOARD TILES
-for (let i=0; i < Math.sqrt(gameOptions.boardSize); i++) {
-  for(let j=0; j < Math.sqrt(gameOptions.boardSize); j++) {
-    gameBoard.createBoard(i,j);
+for (let i=0; i < gameOptions.boardSize; i++) {
+    gameBoard.createBoard(i);
     console.log(virBoard[i]);
-  }
 }
 
 //CODE FOR INITIAL PLACEMENT OF HERO (TILE 0)
