@@ -22,31 +22,31 @@ let gameOptions = {
   dragon: {
     name: "Lisa",
     image: "./images/Dragon1.jpg",
-    location: 0,
+    location: [
+      0, //X
+      0, //Y
+    ]
   },
   treasure: {
     image: "./images/treasure.jpg",
-    location: 0
+    location: [
+      0, //X
+      0, //Y
+    ]
   },
   user: {
     name: "Brave Warrior",
     image: "./images/hero.png",
-    location: 0,
+    location: [
+      0, //X
+      0, //Y
+    ],
   },
 };
 
-function moveChar(dir) {
-  let curLoc = document.getElementById(gameOptions.user.location);
-  let newLoc = gameOptions.user.location + dir;
+function moveChar(loc, cell ,row) {
 
-  //REMOVE HERO CLASS FROM CURRENT LOCATION
-  document.getElementById(gameOptions.user.location).classList.remove('hero');
-  //ADD HERO CLASS TO NEW LOCATION
-  document.getElementById(newLoc).classList.add('hero');
 
-  gameOptions.user.location = newLoc; //UPDATE USER LOCATION
-
-  chkLocation(newLoc); //CHECK LOCATION VS NODE LOCATIONS
 
 }
 
@@ -59,9 +59,9 @@ METHODS AND PROPERTIES:
 ***************************************/
 
 let gameBoard = {
-  createBoard: (tile) => {
+  createBoard: (x,y) => {
     let elDiv = document.createElement("div");
-    elDiv.setAttribute("id", tile);
+    elDiv.setAttribute("id", x + y);
     elDiv.setAttribute("class", "brdTile");
     elBoard.appendChild(elDiv);
   },
@@ -82,13 +82,21 @@ let gameBoard = {
 
   }
 }
+let virBoard = Array(Math.sqrt(gameOptions.boardSize)); //INITIALIZE VIRTUAL BOARD ARRAY
 
-let virBoard = Array(gameOptions.boardSize).fill('x'); //CREATES VIRTUAL BOARD
+// let virBoard = Array(gameOptions.boardSize).fill('x');
+//CREATES VIRTUAL BOARD
+for (let i=0; i < Math.sqrt(gameOptions.boardSize); i++) {
+  let virRow = Array(Math.sqrt(gameOptions.boardSize)).fill('x');
+  virBoard.push(virRow);
+}
 
 //CREATE BOARD TILES
-for (let i=0; i < gameOptions.boardSize; i++) {
-  gameBoard.createBoard(i);
-  console.log(virBoard[i]);
+for (let i=0; i < Math.sqrt(gameOptions.boardSize); i++) {
+  for(let j=0; j < Math.sqrt(gameOptions.boardSize); j++) {
+    gameBoard.createBoard(i,j);
+    console.log(virBoard[i]);
+  }
 }
 
 //CODE FOR INITIAL PLACEMENT OF HERO (TILE 0)
