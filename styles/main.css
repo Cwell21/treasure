@@ -75,7 +75,13 @@ main#gameBoard {
   width: 600px;
 }
 
-.brdTile {
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  width: auto;
+}
+
+.x {
   background-color: rgb(100,100,100);
   border: .5px dashed rgb(125,125,125);
   height: 99px;
