@@ -5,23 +5,62 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Acme|Vollkorn&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME LINK -->
+    <script src="https://kit.fontawesome.com/0a0684ddb1.js"></script>
+
     <link rel="stylesheet" href="styles/meyer-reset.css">
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
     <div class="wrapper">
+      <section id="startSplash">
+        <h2 id="startGameHeader">ENTER IF YOU DARE!</h2>
+        <p>
+          Inside this dungeon lies great treasure.  But beware, this treasure is protected a great dragon! <br />
+          To enter the dungeon, enter your name and click the Enter Dungeon button.<br />
+          Once inside, use the controls to the left to move around the dungeon, find<br />
+          the treasure before the dragon finds you.  <br />
+          Good luck!
+        </p>
+        <div>
+          <img id='startIcon' src='images/dungeon.png' alt="Start Game">
+        </div>
+        <form>
+          <label for="hero">What is your name brave hero?</label>
+          <input type="text" name="hero" id="heroName" placeholder='Brave Hero'>
+          <button id="start">Enter Dungeon</button>
+        </form>
+      </section>
       <section id="endSplash">
         <h2 id="endGameHeader"></h2>
         <div>
           <img id='endIcon' alt="Game Over">
         </div>
+        <form>
+          <button id="playAgain">Play Again</button>
+        </form>
+      </section>
+      <section id="greeting">
+        <h3 id="heroGreet"></h3>
+        <p>
+          Use the controls to the left to move around the dungeon.<br />
+          <br />
+          But beware, a dragon lurks in the dungeon. <br />
+          <br />
+          Find the treasure before the dragon finds you.<br />
+          <br />
+          Use the control buttons on the right to navigate the dungeon. <br />
+        </P>
       </section>
       <main id="gameBoard"></main>
       <aside id="sideControls">
-        <div class="dirButton" onclick="moveChar(1,0)">East</div>
-        <div class="dirButton" onclick="moveChar(0,1)">South</div>
-        <div class="dirButton" onclick="moveChar(0,-1)">North</div>
-        <div class="dirButton" onclick="moveChar(-1,0)">West</div>
+        <div class="dirButton" onclick="moveChar(1,0)"><i class="fas fa-arrow-circle-right"></i></div>
+        <div class="dirButton" onclick="moveChar(-1,0)"><i class="fas fa-arrow-circle-left"></i></div>
+        <div class="dirButton" onclick="moveChar(0,1)"><i class="fas fa-arrow-circle-down"></i></div>
+        <div class="dirButton" onclick="moveChar(0,-1)"><i class="fas fa-arrow-circle-up"></i></div>
       </aside>
     </div>
     <script src="js/script.js"></script>

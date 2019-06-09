@@ -146,6 +146,30 @@ function nodeLocation(x,y,gameNode) {
   virBoard[y][x] = gameNode;
 }
 
+//ADD FUNCTION TO START GAME ON BUTTON CLICK
+document.getElementById('start').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const elStartSplash = document.getElementById('startSplash');
+  const elUserName = document.getElementById('heroName');
+
+  if (elUserName.value.length != 0) {
+    gameOptions.user.name = elUserName.value;
+  }
+
+  document.getElementById('heroGreet').innerHTML = `Welcome ${gameOptions.user.name}!`;
+
+  elStartSplash.style.width = 0;
+  elStartSplash.style.height = 0;
+
+})
+
+//ADD FUNCTION TO RESTART GAME ON BUTTON CLICK
+document.getElementById('playAgain').addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location.reload(true);
+})
+
 //CREATES VIRTUAL BOARD - DEFAULT 6 (sqrt of 36) ROWS OF 6 (sqrt of 36) CELLS
 for (let i=0; i < Math.sqrt(gameOptions.boardSize); i++) {
   let virRow = Array(Math.sqrt(gameOptions.boardSize)).fill('x');

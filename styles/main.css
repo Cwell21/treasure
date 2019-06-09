@@ -1,6 +1,8 @@
 /* CODE NOTES
 
-
+FONT CODE
+font-family: 'Acme', sans-serif; - HEADINGS
+font-family: 'Vollkorn', serif; - TEXT
 */
 
 
@@ -23,6 +25,7 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
 div.wrapper {
   align-items: center;
   background-color: rgb(5,5,5);
@@ -34,7 +37,85 @@ div.wrapper {
 }
 
 /****************************************************************************
-SPLASH STYLES
+START SPLASH STYLES
+*****************************************************************************/
+#startSplash {
+  align-items: center;
+  background-color: rgba(75,75,75,.5);
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  padding: 1rem 0;
+  position: absolute;
+  top: 0;
+  transition: height .5s, width .5s;
+  width: 100%;
+}
+
+#startSplash h2 {
+  background: rgb(150,150,150);
+  color: rgb(255,255,255);
+  font-family: 'Acme', sans-serif;
+  height: 3rem;
+  padding-top: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+#startSplash p {
+  background: rgb(150,150,150);
+  color: rgb(255,255,255);
+  font-family: 'Vollkorn', serif;
+  font-size: 1.5rem;
+  padding: 0 3.125rem;
+  text-align: center;
+  width: 100%;
+
+}
+
+#startSplash div {
+  background: rgb(150,150,150);
+  height: 15rem;
+  overflow: hidden;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+div > img {
+  border-radius: 5px;
+  box-shadow: 5px 5px rgb(50,50,50);
+  display: block;
+  margin: auto;
+  max-height: 100%;
+}
+form {
+  align-items: center;
+  background: rgb(150,150,150);
+  display: flex;
+  justify-content: center;
+  height: 3rem;
+  width: 100%;
+}
+
+input[type='text'] {
+  height: 1rem;
+  margin: 0 2rem;
+  width: 10rem;
+
+}
+button#start{
+  height: 2rem;
+}
+label {
+  color: rgb(255,255,255);
+  font-size: 1.25rem;
+}
+
+/****************************************************************************
+END SPLASH STYLES
 *****************************************************************************/
 #endSplash {
   align-items: center;
@@ -53,8 +134,10 @@ SPLASH STYLES
 
 #endSplash h2 {
   background: rgb(150,150,150);
-  color: rgb(200,200,200);
-  height: auto;
+  color: rgb(255,255,255);
+  font-family: 'Acme', sans-serif;
+  height: 3rem;
+  padding-top: 2rem;
   text-align: center;
   width: 100%;
 }
@@ -69,40 +152,42 @@ SPLASH STYLES
 
 div > img {
   border-radius: 5px;
+  box-shadow: 5px 5px rgb(50,50,50);
   display: block;
-
   margin: auto;
   max-height: 100%;
 }
 
-
+button#playAgain{
+  height: 2rem;
+}
 /****************************************************************************
-CONTROL STYLES
+GREETING STYLES
 *****************************************************************************/
-aside#sideControls {
+
+#greeting {
   align-items: center;
   border: 1px solid rgb(150,150,150);
   border-radius: 5px;
+  color: rgb(255,255,255);
   display: flex;
   flex-flow: column;
+  font-family: 'Acme', sans-serif;
+  font-size: 1.25rem;
   height: 600px;
-  justify-content: space-around;
-  width: 100px;
-
+  justify-content: flex-start;
+  width: 30%;
 }
 
-div.dirButton {
-  background-color: rgb(47, 122, 47);
-  border: 5px dashed rgb(25,125,25);
-  border-radius: 5px;
-  height: 20%;
-  width: 50%;
+#heroGreet {
+  height: 3rem;
+  margin: 2rem 0;
 }
 
-div.dirButton:hover {
-  background-color: rgb(55, 253, 55);
-  cursor: pointer;
+#heroGreet + p {
+  width: 75%;
 }
+
 
 /****************************************************************************
 BOARD STYLES
@@ -112,7 +197,7 @@ main#gameBoard {
   display: flex;
   flex-flow: row wrap;
   height: 600px;
-  margin-right: 1%;
+  margin: 0 1%;
   width: 600px;
 }
 
@@ -149,4 +234,38 @@ main#gameBoard {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+
+/****************************************************************************
+CONTROL STYLES
+*****************************************************************************/
+aside#sideControls {
+  align-items: center;
+  border: 1px solid rgb(150,150,150);
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column;
+  height: 600px;
+  justify-content: space-around;
+  width: 100px;
+
+}
+
+div.dirButton {
+  align-items: center;
+  background-color: rgb(47, 122, 47);
+  border: 2px solid rgb(25,125,25);
+  border-radius: 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 3rem;
+  height: 20%;
+  justify-content: center;
+  width: 75%;
+}
+
+div.dirButton:hover {
+  background-color: rgb(55, 253, 55);
+  cursor: pointer;
 }
