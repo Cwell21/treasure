@@ -36,14 +36,45 @@ div.wrapper {
 /****************************************************************************
 SPLASH STYLES
 *****************************************************************************/
-.endSplash {
+#endSplash {
+  align-items: center;
   background-color: rgba(75,75,75,.5);
-  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 0;
+  justify-content: center;
   left: 0;
+  overflow: hidden;
   position: absolute;
   top: 0;
+  transition: height .5s, width .5s;
+  width: 0;
+}
+
+#endSplash h2 {
+  background: rgb(150,150,150);
+  color: rgb(200,200,200);
+  height: auto;
+  text-align: center;
   width: 100%;
 }
+
+#endSplash div {
+  background: rgb(150,150,150);
+  height: 75%;
+  overflow: hidden;
+  padding: 15px 0;
+  width: 100%;
+}
+
+div > img {
+  border-radius: 5px;
+  display: block;
+
+  margin: auto;
+  max-height: 100%;
+}
+
 
 /****************************************************************************
 CONTROL STYLES

@@ -7,15 +7,37 @@ const elControl = document.getElementById('sideControls');
 //CODE FOR INITIAL PLACEMENT OF HERO (TILE 0)
 let elCurLoc = [0,0];
 
+const endGame = result => {
+  const elEndSplash = document.getElementById('endSplash');
+
+  elEndSplash.style.width = 100 + '%';
+  elEndSplash.style.height = 100 + '%';
+
+  const elEndIcon = document.getElementById('endIcon');
+  const elEndGameHeader = document.getElementById('endGameHeader');
+  setTimeout(() => {
+    if(result === 'win') {
+      elEndGameHeader.innerHTML = 'Congratulations, you have found the treasure!';
+      elEndIcon.setAttribute('src', gameOptions.treasure.image);
+    }else if (result === 'lose') {
+      elEndGameHeader.innerHTML = 'Uh Oh, you have been eaten by a dragon!';
+      elEndIcon.setAttribute('src', gameOptions.dragon.image);
+    } else {
+      return;
+    }
+  }, 1.25)
+
+}
+
 //FUNCTION TO CHECK HERO LOCATION VS GAME NODE LOCATIONS
 let chkLocation = heroLoc => {
   if(virBoard[elCurLoc[0]][elCurLoc[1]] != 'x') {
     if(virBoard[elCurLoc[0]][elCurLoc[1]] === 't') {
       console.log('win');
-      return 'win';
+      endGame('win');
     } else {
       console.log('lose');
-      return 'lose';
+      endGame('lose');
     }
   }
   return;
@@ -27,14 +49,14 @@ let gameOptions = {
   tileId: 0, //PROPERTY TO KEEP TRACK OF ID FOR EACH TILE
   dragon: {
     name: 'Lisa',
-    image: './images/Dragon1.jpg',
+    image: './images/dragon1.jpg',
     location: [
       0, //Y - ROW
       0, //X - CELL
     ]
   },
   treasure: {
-    image: './images/treasure.jpg',
+    image: './images/treasure.png',
     location: [
       0, //Y - ROW
       0, //X - CELL
